@@ -1,9 +1,19 @@
-# grade 1. Этап 1. Задание 2
+# grade 1. Этап 1. Задание 1
 
-from datetime import datetime
-from greetings import issue_date
+# Определение переменных
 
-issue_date = input('Введите дату в формате ЧЧ.ММ.ГГГГ: ')
-print(issue_date)
-datetime.strptime(issue_date, '%d.%m.%Y')
-print(issue_date, type(issue_date))
+username = 'Anton Zavyalov'                         # Имя пользователя
+title = 'Погулять с собакой'                        # Заговловок заметки
+content = 'Погулять с собакой в парке вечером'      # Описание заметки
+status = 'Активна'                                  # Статус заметки
+created_date = '06-12-2024'                         # Дата создания заметки
+issue_date = '15-12-2024'                           # Дата истечения заметки
+
+# Вывод значений переменных
+
+print('Имя пользователя: ', username)
+print('Заголовок заметки: ', title)
+print('Описание заметки: ', content)
+print('Статус заметки: ', status)
+print('Дата создания заметки: ', created_date)
+print('Дата истечения заметки: ', issue_date)
