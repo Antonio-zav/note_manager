@@ -1,7 +1,6 @@
 # grade 1. Этап 1. Задание 2
 
-from add_input import issue_date
-from add_input import created_date
+from add_input import issue_date, created_date
 
 created_date_d = int(created_date[0:2])
 created_date_m = int(created_date[3:5])
