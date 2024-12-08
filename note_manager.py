@@ -10,4 +10,4 @@ print('Сегодняшняя дата:', created_date_d, '.', created_date_m)  
 issue_date_d = int(issue_date[0:2])
 issue_date_m = int(issue_date[3:5])
 issue_date_y = int(issue_date[6:])
-print('Нужная дата:', issue_date_d, '.', issue_date_m)        #Вывод нужной даты без вывода года
+print('Нужная дата:', issue_date_d, '.', issue_date_m)             #Вывод нужной даты без вывода года
