@@ -10,10 +10,4 @@ for i in range (4):
     titles.append(title)
 
 # Вывод данных для проверки
-#print('Вы ввели следующие данные: ')
-#print('Имя пользователя: ', username)
-#print('Заголовок заметки: ', titles)
-#print('Описание заметки: ', content)
-#print('Статус заметки: ', status)
-#print('Дата создания заметки: ', created_date)
-#print('Дата истечения заметки: ', issue_date)
+# print('Заголовок заметки: ', titles)
