@@ -1,3 +1,4 @@
+# grade 1. Этап 2. Задание 1
 titles = []
 i = 0
 title = ''
