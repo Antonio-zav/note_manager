@@ -8,11 +8,11 @@ for i in range(len(titles)):
     num = input("Введите нужное значение для изменения статуса заметки: "
           "1 - Активна, "
           "2 - Неактивна, "
-          "3 - Отложена")
-    if num == 'Активна' or num == '1':
+          "3 - Отложена ")
+    if num.capitalize() == 'Активна' or num == '1':
         titles_stat.update({titles[i]: ' Активна'})
         print('Статус заметки упешно изменен на: Активна')
-    elif num == 'Неактивна' or num == '2':
+    elif num.capitalize() == 'Неактивна' or num == '2':
         titles_stat.update({titles[i]: ' Неактивна'})
         print('Статус заметки упешно изменен на: Неактивна')
     else:
