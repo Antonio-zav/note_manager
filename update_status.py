@@ -1,5 +1,7 @@
  # grade 1. Этап 2. Задание 2
+
 from add_titles_loop import titles
+
 titles_stat = {}
 for i in range(len(titles)):
     print(titles[i])
