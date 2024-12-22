@@ -2,10 +2,14 @@
 titles = []
 i = 0
 title = ''
-while title != 'стоп':
-    i = i + 1
-    titles.append(title)
-    title = input(f'Введите заголовок заметки № {i}: ')
+while title.capitalize() != 'Нет':
+    n = input('Хотите добавить ещё одну заметку Да/Нет? ')
+    if n.capitalize() == 'Да':
+        i = i + 1
+        title = input(f'Введите заголовок заметки № {i}: ')
+        titles.append(title)
+    elif n.capitalize() == 'Нет':
+        break
+    else: continue
 
-titles.remove('')
 print('Ваши заголовки: ', titles)
