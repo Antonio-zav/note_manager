@@ -2,6 +2,11 @@
 titles = []
 i = 0
 title = ''
+
+#Запрос никнейма
+
+username = input('Введите вашу Фанимилию: ')
+
 while title.capitalize() != 'Нет':
     n = input('Хотите добавить ещё одну заметку Да/Нет? ')
     if n.capitalize() == 'Да':
