@@ -12,12 +12,12 @@ current_date_m = int(current_date[5:7])
 titles_stat = {}
 for i in range(len(titles)):
     print('Заметка: ', titles[i])
-    num = input("Введите нужное значение для изменения статуса заметки: "
+    temp = input("Введите нужное значение для изменения статуса заметки: "
           "1 - Активна, "
           "2 - Неактивна, "
           "3 - Отложена "
           "4 - Удалить заметку ")
-    if num.capitalize() == 'Активна' or num == '1':
+    if temp.capitalize() == 'Активна' or temp == '1':
         print('Статус заметки упешно изменен на: Активна')
         while True:
             temp_date = input('Введите необходимую дату в формате ЧЧ.ММ.ГГГГ: ')
@@ -29,10 +29,10 @@ for i in range(len(titles)):
             else:
                 print('Вы ввели уже прошедшую дату!! Попробуйте снова. ')
 
-    elif num.capitalize() == 'Неактивна' or num == '2':
+    elif temp.capitalize() == 'Неактивна' or temp == '2':
         titles_stat.update({titles[i]: ' Неактивна'})
         print('Статус заметки упешно изменен на: Неактивна')
-    elif num.capitalize() == 'Удалить' or num == '4':
+    elif temp.capitalize() == 'Удалить' or temp == '4':
         var = titles.pop(i)
         print("Вы удалили заметку: ", var)
     else:
