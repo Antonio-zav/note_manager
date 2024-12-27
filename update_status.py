@@ -4,7 +4,7 @@ from add_titles_loop import titles
 
 titles_stat = {}
 for i in range(len(titles)):
-    print(titles[i])
+    print('Заметка: ', titles[i])
     num = input("Введите нужное значение для изменения статуса заметки: "
           "1 - Активна, "
           "2 - Неактивна, "
