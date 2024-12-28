@@ -28,7 +28,7 @@ def create_note():
                     break
                 except ValueError:
                     print('Вы ввели некоректный формат даты!')
-            titles_stat[f'Заметка № {temp_for_title} '] = {
+            titles_stat[f'Заметка {temp_for_title} '] = {
                 'Имя пользователя: ':  username ,
                 'Заголов заметки: ': title,
                 'Описание заметки: ': content,
@@ -36,14 +36,14 @@ def create_note():
                 'Текущая дата: ': current_date,
                 'Дата дедлайна: ': issue_date
             }
-            temp_f = titles_stat[f'Заметка № {temp_for_title} ']
+            temp_f = titles_stat[f'Заметка {temp_for_title} ']
             print('Введенная заметка: ',temp_f)
             temp_for_title = temp_for_title + 1
         elif asker.capitalize() == 'Нет' or asker.capitalize() == '':       #Вывод введенных заметок
             print('Вы ввели следующие заметки: ')
             i = 1
             for key in titles_stat:
-                print(f'Заметка № {i}')
+                print(f'Заметка {i}')
                 print(titles_stat[key])
                 i = i + 1
             break
