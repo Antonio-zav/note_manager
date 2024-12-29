@@ -2,7 +2,6 @@
 
 from datetime import date, datetime
 
-titles_stat = {}
 def create_note():
     temp_for_title = 1
     while True:
@@ -52,7 +51,7 @@ def create_note():
             print('Некорректный ввод команды! ')
     return titles_stat
 
-def update_note():
+def update_note(titles_stat):
     if titles_stat != {}:
         while True:
             temp_num_title = input('Введите номер заметки которую вы хотите изменить или "Нет" если ничего менять не требуется: ')
@@ -99,6 +98,7 @@ def update_note():
                             print('Вы ввели некоректный формат даты!')
                     temp_value_1[temp_key] = issue_date
                     titles_stat[f'Заметка {temp_num_title}'] = temp_value_1
+                print('Значение поля успешно изменено!')
             except ValueError:
                 if temp_num_title.capitalize() == 'Нет' or temp_num_title.capitalize() == '':
                     print('Вы закончили замену! ')
@@ -112,10 +112,20 @@ def update_note():
             k = k + 1
         return titles_stat
 
-def display_notes(notes):
+def display_notes(titles_stat):
+    i = 0
+    for keys in titles_stat:
+        i = i + 1
+        print('-------------------------')
+        print(f'Заметка {i}:')
+        temp_val = titles_stat[keys]
+        for keys in temp_val:
+            print(keys, ':',temp_val[keys])
+
+titles_stat = {}
 
 titles_stat = create_note()
-titles_stat = update_note()
-
+titles_stat = update_note(titles_stat)
+display_notes(titles_stat)
 
 

@@ -99,6 +99,7 @@ def update_note():
                             print('Вы ввели некоректный формат даты!')
                     temp_value_1[temp_key] = issue_date
                     titles_stat[f'Заметка {temp_num_title}'] = temp_value_1
+                print('Значение поля успешно изменено!')
             except ValueError:
                 if temp_num_title.capitalize() == 'Нет' or temp_num_title.capitalize() == '':
                     print('Вы закончили замену! ')
