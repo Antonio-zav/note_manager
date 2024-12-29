@@ -1,4 +1,4 @@
-# grade 1. Этап 3. Задание 2
+# grade 1. Этап 3. Задание 3
 
 from datetime import date, datetime
 
@@ -112,6 +112,10 @@ def update_note():
             k = k + 1
         return titles_stat
 
-titles_stat = create_note()
+def display_notes(notes):
 
-a = update_note()
+titles_stat = create_note()
+titles_stat = update_note()
+
+
+

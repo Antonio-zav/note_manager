@@ -16,7 +16,7 @@ def create_note():
             current_date = str(date.today())
             while True:
                 status = input('Введите статус заметки (Новая, В процессе, Выполнено): ').capitalize()
-                if status == 'Новая' or status == 'В процессе' or status == 'Выполнено':
+                if status == 'Новая' or status == 'В процессе' or status == 'Новая':
                     break
                 else:
                     print('Вы ввели некоректный статус заметки! ')
@@ -39,6 +39,9 @@ def create_note():
             temp_f = titles_stat[f'Заметка {temp_for_title}']
             print('Введенная заметка: ',temp_f)
             temp_for_title = temp_for_title + 1
+        elif asker == 'Нет' and titles_stat == {}:
+            print('Вы не ввели новых заметок! ')
+            break
         elif asker == 'Нет' or asker == '':       #Вывод введенных заметок
             print('Вы ввели следующие заметки: ')
             i = 1
