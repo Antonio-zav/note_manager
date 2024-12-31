@@ -13,7 +13,7 @@ def create_note():
             current_date = str(date.today())
             while True:
                 status = input('Введите статус заметки (Новая, В процессе, Выполнено): ').capitalize()
-                if status == 'Новая' or status == 'В процессе' or status == 'Новая':
+                if status == 'Новая' or status == 'В процессе' or status == 'Выполнено':
                     break
                 else:
                     print('Вы ввели некоректный статус заметки! ')
