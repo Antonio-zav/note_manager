@@ -2,7 +2,6 @@
 
 from datetime import date, datetime
 
-titles_stat = {}
 def create_note():
     temp_for_title = 1
     while True:
@@ -35,38 +34,59 @@ def create_note():
                 'Дата дедлайна': issue_date
             }
             temp_f = titles_stat[f'Заметка {temp_for_title}']
-            print('Введенная заметка: ',temp_f)
+            print('-------------------------')
+            print(f'Введенная заметка:',
+                  '\nИмя пользователя:', temp_f['Имя пользователя'],
+                  '\nЗаголовок заметки:', temp_f['Заголовок заметки'],
+                  '\nОписание заметки:', temp_f['Описание заметки'],
+                  '\nСтатус заметки:', temp_f['Статус заметки'],
+                  '\nТекущая дата:', temp_f['Текущая дата'],
+                  '\nДата дедлайна:', temp_f['Дата дедлайна'])
             temp_for_title = temp_for_title + 1
         elif asker == 'Нет' and titles_stat == {}:
             print('Вы не ввели новых заметок! ')
             break
         elif asker == 'Нет' or asker == '':       #Вывод введенных заметок
             print('Вы ввели следующие заметки: ')
-            i = 1
-            for keys in titles_stat:
-                print('')
-                print(f'Заметка {i} ', titles_stat[keys])
-                i = i + 1
+            for i in range(len(titles_stat)):
+                temp_f = titles_stat[f'Заметка {i+1}']
+                print('-------------------------')
+                print(f'Заметка {i+1}:',
+                      '\nИмя пользователя:', temp_f['Имя пользователя'],
+                      '\nЗаголовок заметки:', temp_f['Заголовок заметки'],
+                      '\nОписание заметки:', temp_f['Описание заметки'],
+                      '\nСтатус заметки:', temp_f['Статус заметки'],
+                      '\nТекущая дата:', temp_f['Текущая дата'],
+                      '\nДата дедлайна:', temp_f['Дата дедлайна'])
             break
         else:
             print('Некорректный ввод команды! ')
     return titles_stat
 
-def update_note():
+def update_note(titles_stat):
     if titles_stat != {}:
+        temp_num_title = input('Введите номер заметки которую вы хотите изменить или "Нет" если ничего менять не требуется: ')
         while True:
-            temp_num_title = input('Введите номер заметки которую вы хотите изменить или "Нет" если ничего менять не требуется: ')
             try:
                 temp_num_title = int(int(temp_num_title) / 1)
-                print('Выбранная заметка: ', titles_stat[f'Заметка {temp_num_title}'])
+                print('Выбранная заметка: ')
+                temp_val = titles_stat[f'Заметка {temp_num_title}']
+                print('-------------------------')
+                print(f'Заметка {temp_num_title}',
+                      '\nИмя пользователя:', temp_val['Имя пользователя'],
+                      '\nЗаголовок заметки:', temp_val['Заголовок заметки'],
+                      '\nОписание заметки:', temp_val['Описание заметки'],
+                      '\nСтатус заметки:', temp_val['Статус заметки'],
+                      '\nТекущая дата:', temp_val['Текущая дата'],
+                      '\nДата дедлайна:', temp_val['Дата дедлайна'])
                 while True:
-                    temp_key = input('Введите название поля которое вы хотите изменить: '
+                    temp_key = input(''
                                      '\nИмя пользователя'
                                      '\nЗаголовок заметки'
                                      '\nОписание заметки'
                                      '\nСтатус заметки'
                                      '\nДата дедлайна'
-                                     '\n'
+                                     '\nВведите название поля которое вы хотите изменить: '
                                      ).capitalize()
                     if temp_key == 'Имя пользователя' or temp_key == 'Заголовок заметки' or temp_key == 'Описание заметки' or temp_key == 'Статус заметки' or temp_key == 'Дата дедлайна':
                         break
@@ -81,37 +101,54 @@ def update_note():
                     titles_stat[f'Заметка {temp_num_title}'] = temp_value_1
                 elif temp_key == 'Статус заметки':
                     while True:
-                        status = input('Введите новый статус заметки (Новая, В процессе, Выполнено): ').capitalize()
-                        if status == 'Новая' or status == 'В процессе' or status == 'Выполнено':
-                            temp_value_1[temp_key] = status
+                        temp_val = input('Введите новый статус заметки (Новая, В процессе, Выполнено): ').capitalize()
+                        if temp_val == 'Новая' or temp_val == 'В процессе' or temp_val == 'Выполнено':
+                            temp_value_1[temp_key] = temp_val
                             titles_stat[f'Заметка {temp_num_title}'] = temp_value_1
                             break
                         else:
                             print('Вы ввели некоректный статус заметки! ')
                 elif temp_key == 'Дата дедлайна':
                     while True:
-                        issue_date = input('Введите нужную дату в формате ЧЧ.ММ.ГГГГ: ')
+                        temp_val = input('Введите нужную дату в формате ЧЧ.ММ.ГГГГ: ')
                         format = "%d.%m.%Y"
                         try:
-                            res = bool(datetime.strptime(issue_date, format))
+                            res = bool(datetime.strptime(temp_val, format))
                             break
                         except ValueError:
                             print('Вы ввели некоректный формат даты!')
-                    temp_value_1[temp_key] = issue_date
+                    temp_value_1[temp_key] = temp_val
                     titles_stat[f'Заметка {temp_num_title}'] = temp_value_1
-                print('Значение поля успешно изменено!')
+                print(f'Значение поля "{temp_key}" успешно изменено на: {temp_val}')
+                temp_val = titles_stat[f'Заметка {temp_num_title}']
+                print(f'Заметка {temp_num_title}',
+                      '\nИмя пользователя:', temp_val['Имя пользователя'],
+                      '\nЗаголовок заметки:', temp_val['Заголовок заметки'],
+                      '\nОписание заметки:', temp_val['Описание заметки'],
+                      '\nСтатус заметки:', temp_val['Статус заметки'],
+                      '\nТекущая дата:', temp_val['Текущая дата'],
+                      '\nДата дедлайна:', temp_val['Дата дедлайна'])
+                while True:
+                    a = input('Желаете ли снова изменить эту заметку? Да/Нет').capitalize()
+                    if a == 'Да' or a == 'Нет':
+                        break
+                    else:
+                        print('Вы ввели некоректную команду, попробуйте снова! ')
+                if a == 'Да':
+                    continue
+                elif a == 'Нет':
+                    print('Вы закончили замену! ')
+                    break
             except ValueError:
                 if temp_num_title.capitalize() == 'Нет' or temp_num_title.capitalize() == '':
                     print('Вы закончили замену! ')
                     break
                 else:
                     print('Вы ввели некоректную команду, попробуйте снова! ')
-        k = 1
-        for keys in titles_stat:
-            print('')
-            print(f'Заметка {k} ', titles_stat[keys])
-            k = k + 1
         return titles_stat
+    else:
+        print('Нет введенных заметок')
 
+titles_stat = {}
 titles_stat = create_note()
-a = update_note()
+update_note(titles_stat)
