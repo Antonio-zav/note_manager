@@ -289,37 +289,39 @@ def delete_note(titles_stat):
             print('Вы ввели некоректную команду, попробуйте снова!')
     return titles_stat
 
-titles_stat = {}
-print('Здравствуйте пользователь!')
-while True:
-    print('----------------------')
-    print('Меню:'
-          '\n1 - Создание заметок'
-          '\n2 - Показать все заметки'
-          '\n3 - Обновить заметку'
-          '\n4 - Удалить заметку'
-          '\n5 - Найти заметки'
-          '\n6 - Выйти из программы')
-    ask_num = input('Выберите нужное действие из меню: ')
-    try:
-        ask_num = int(ask_num)
-        if ask_num == 1:
-            create_note()
-        elif ask_num == 2:
-            display_notes(titles_stat)
-        elif ask_num == 3:
-            display_notes(titles_stat)
-            update_note(titles_stat)
-        elif ask_num == 4:
-            display_notes(titles_stat)
-            delete_note(titles_stat)
-        elif ask_num == 5:
-            search_notes(titles_stat)
-        elif ask_num == 6:
-            print('Досвидания!!!')
-            break
-        else:
+def menu():
+    print('Здравствуйте пользователь!')
+    while True:
+        print('----------------------')
+        print('Меню:'
+              '\n1 - Создание заметок'
+              '\n2 - Показать все заметки'
+              '\n3 - Обновить заметку'
+              '\n4 - Удалить заметку'
+              '\n5 - Найти заметки'
+              '\n6 - Выйти из программы')
+        ask_num = input('Выберите нужное действие из меню: ')
+        try:
+            ask_num = int(ask_num)
+            if ask_num == 1:
+                create_note()
+            elif ask_num == 2:
+                display_notes(titles_stat)
+            elif ask_num == 3:
+                display_notes(titles_stat)
+                update_note(titles_stat)
+            elif ask_num == 4:
+                display_notes(titles_stat)
+                delete_note(titles_stat)
+            elif ask_num == 5:
+                search_notes(titles_stat)
+            elif ask_num == 6:
+                print('Досвидания!!!')
+                break
+            else:
+                print('Вы ввели недопустимую команду')
+        except ValueError:
             print('Вы ввели недопустимую команду')
-    except ValueError:
-        print('Вы ввели недопустимую команду')
 
+titles_stat = {}
+menu()
