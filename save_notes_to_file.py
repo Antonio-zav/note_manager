@@ -323,20 +323,21 @@ def menu():
         except ValueError:
             print('Вы ввели недопустимую команду')
 
-Note_manager = open('Note_manager.txt', 'w', encoding='utf-8')
+def save_notes_to_file():
+    Note_manager = open('Note_manager.txt', 'w', encoding='utf-8')
+    i = 0
+    Note_manager.write('Ваши заметки:\n')
+    for keys in titles_stat:
+        i += 1
+        Note_manager.write('-------------------------\n')
+        Note_manager.write(f'Заметка {i}:\n')
+        temp_val = titles_stat[keys]
+        for keys in temp_val:
+            temp = f'{keys}: {temp_val[keys]}\n'
+            Note_manager.write(temp)
+
+    Note_manager.close()
 
 titles_stat = {}
 menu()
-i = 0
-Note_manager.write('Ваши заметки:\n')
-
-for keys in titles_stat:
-    i += 1
-    Note_manager.write('-------------------------\n')
-    Note_manager.write(f'Заметка {i}:\n')
-    temp_val = titles_stat[keys]
-    for keys in temp_val:
-        temp = f'{keys}: {temp_val[keys]}\n'
-        Note_manager.write(temp)
-
-Note_manager.close()
+save_notes_to_file()
