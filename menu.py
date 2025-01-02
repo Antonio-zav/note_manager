@@ -153,7 +153,7 @@ def update_note(titles_stat):
 def display_notes(titles_stat):
     i = 0
     if titles_stat != {}:
-        print('Выши заметки: ')
+        print('Ваши заметки: ')
         for keys in titles_stat:
             i = i + 1
             print('-------------------------')
