@@ -28,7 +28,6 @@ def load_notes_from_file():
             temp_stat['status'] = temp_str.pop(0)
             temp_stat['current_date'] = temp_str.pop(0)
             temp_stat['issue_date'] = temp_str.pop(0)
-            print(temp_stat)
             note.append(temp_stat)
             temp_stat = {}
             print(note)
