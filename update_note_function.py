@@ -65,80 +65,85 @@ def create_note():
 
 def update_note(titles_stat):
     if titles_stat != {}:
-        temp_num_title = input('Введите номер заметки которую вы хотите изменить или "Нет" если ничего менять не требуется: ')
         while True:
+            display_notes(titles_stat)
             try:
+                temp_num_title = input('Введите номер заметки которую вы хотите изменить или "Нет" если ничего менять не требуется: ')
                 temp_num_title = int(int(temp_num_title) / 1)
-                print('Выбранная заметка: ')
-                temp_val = titles_stat[f'Заметка {temp_num_title}']
-                print('-------------------------')
-                print(f'Заметка {temp_num_title}',
-                      '\nИмя пользователя:', temp_val['Имя пользователя'],
-                      '\nЗаголовок заметки:', temp_val['Заголовок заметки'],
-                      '\nОписание заметки:', temp_val['Описание заметки'],
-                      '\nСтатус заметки:', temp_val['Статус заметки'],
-                      '\nТекущая дата:', temp_val['Текущая дата'],
-                      '\nДата дедлайна:', temp_val['Дата дедлайна'])
-                while True:
-                    temp_key = input(''
-                                     '\nИмя пользователя'
-                                     '\nЗаголовок заметки'
-                                     '\nОписание заметки'
-                                     '\nСтатус заметки'
-                                     '\nДата дедлайна'
-                                     '\nВведите название поля которое вы хотите изменить: '
-                                     ).capitalize()
-                    if temp_key == 'Имя пользователя' or temp_key == 'Заголовок заметки' or temp_key == 'Описание заметки' or temp_key == 'Статус заметки' or temp_key == 'Дата дедлайна':
-                        break
-                    else:
-                        print('Некорректный ввод значения, попробуйте снова! ')
-                temp_value_1 = titles_stat.pop(f'Заметка {temp_num_title}')
-                temp_value_2 = temp_value_1.pop(f'{temp_key}')
-                print('Значение выбранного поля:', temp_value_2)
-                if temp_key == 'Имя пользователя' or temp_key == 'Заголовок заметки' or temp_key == 'Описание заметки':
-                    temp_val = input('Введите новое значение для выбранного поля: ').capitalize()
-                    temp_value_1[temp_key] = temp_val
-                    titles_stat[f'Заметка {temp_num_title}'] = temp_value_1
-                elif temp_key == 'Статус заметки':
+                try:
+                    temp_val = titles_stat[f'Заметка {temp_num_title}']
+                    print('Выбранная заметка: ')
+                    print('-------------------------')
+                    print(f'Заметка {temp_num_title}',
+                          '\nИмя пользователя:', temp_val['Имя пользователя'],
+                          '\nЗаголовок заметки:', temp_val['Заголовок заметки'],
+                          '\nОписание заметки:', temp_val['Описание заметки'],
+                          '\nСтатус заметки:', temp_val['Статус заметки'],
+                          '\nТекущая дата:', temp_val['Текущая дата'],
+                          '\nДата дедлайна:', temp_val['Дата дедлайна'])
                     while True:
-                        temp_val = input('Введите новый статус заметки (Новая, В процессе, Выполнено): ').capitalize()
-                        if temp_val == 'Новая' or temp_val == 'В процессе' or temp_val == 'Выполнено':
-                            temp_value_1[temp_key] = temp_val
-                            titles_stat[f'Заметка {temp_num_title}'] = temp_value_1
+                        temp_key = input(''
+                                         '\nИмя пользователя'
+                                         '\nЗаголовок заметки'
+                                         '\nОписание заметки'
+                                         '\nСтатус заметки'
+                                         '\nДата дедлайна'
+                                         '\nВведите название поля которое вы хотите изменить: '
+                                         ).capitalize()
+                        if temp_key == 'Имя пользователя' or temp_key == 'Заголовок заметки' or temp_key == 'Описание заметки' or temp_key == 'Статус заметки' or temp_key == 'Дата дедлайна':
                             break
                         else:
-                            print('Вы ввели некоректный статус заметки! ')
-                elif temp_key == 'Дата дедлайна':
+                            print('Некорректный ввод значения, попробуйте снова! ')
+                    temp_value_1 = titles_stat.pop(f'Заметка {temp_num_title}')
+                    temp_value_2 = temp_value_1.pop(f'{temp_key}')
+                    print('Значение выбранного поля:', temp_value_2)
+                    if temp_key == 'Имя пользователя' or temp_key == 'Заголовок заметки' or temp_key == 'Описание заметки':
+                        temp_val = input('Введите новое значение для выбранного поля: ').capitalize()
+                        temp_value_1[temp_key] = temp_val
+                        titles_stat[f'Заметка {temp_num_title}'] = temp_value_1
+                    elif temp_key == 'Статус заметки':
+                        while True:
+                            temp_val = input('Введите новый статус заметки (Новая, В процессе, Выполнено): ').capitalize()
+                            if temp_val == 'Новая' or temp_val == 'В процессе' or temp_val == 'Выполнено':
+                                temp_value_1[temp_key] = temp_val
+                                titles_stat[f'Заметка {temp_num_title}'] = temp_value_1
+                                break
+                            else:
+                                print('Вы ввели некоректный статус заметки! ')
+                    elif temp_key == 'Дата дедлайна':
+                        while True:
+                            temp_val = input('Введите нужную дату в формате ЧЧ.ММ.ГГГГ: ')
+                            format = "%d.%m.%Y"
+                            try:
+                                res = bool(datetime.strptime(temp_val, format))
+                                break
+                            except ValueError:
+                                print('Вы ввели некоректный формат даты!')
+                        temp_value_1[temp_key] = temp_val
+                        titles_stat[f'Заметка {temp_num_title}'] = temp_value_1
+                    print(f'Значение поля "{temp_key}" успешно изменено на: {temp_val}')
+                    temp_val = titles_stat[f'Заметка {temp_num_title}']
+                    print(f'Заметка {temp_num_title}',
+                          '\nИмя пользователя:', temp_val['Имя пользователя'],
+                          '\nЗаголовок заметки:', temp_val['Заголовок заметки'],
+                          '\nОписание заметки:', temp_val['Описание заметки'],
+                          '\nСтатус заметки:', temp_val['Статус заметки'],
+                          '\nТекущая дата:', temp_val['Текущая дата'],
+                          '\nДата дедлайна:', temp_val['Дата дедлайна'])
                     while True:
-                        temp_val = input('Введите нужную дату в формате ЧЧ.ММ.ГГГГ: ')
-                        format = "%d.%m.%Y"
-                        try:
-                            res = bool(datetime.strptime(temp_val, format))
+                        a = input('Желаете ли снова изменить эту заметку? Да/Нет').capitalize()
+                        if a == 'Да' or a == 'Нет':
                             break
-                        except ValueError:
-                            print('Вы ввели некоректный формат даты!')
-                    temp_value_1[temp_key] = temp_val
-                    titles_stat[f'Заметка {temp_num_title}'] = temp_value_1
-                print(f'Значение поля "{temp_key}" успешно изменено на: {temp_val}')
-                temp_val = titles_stat[f'Заметка {temp_num_title}']
-                print(f'Заметка {temp_num_title}',
-                      '\nИмя пользователя:', temp_val['Имя пользователя'],
-                      '\nЗаголовок заметки:', temp_val['Заголовок заметки'],
-                      '\nОписание заметки:', temp_val['Описание заметки'],
-                      '\nСтатус заметки:', temp_val['Статус заметки'],
-                      '\nТекущая дата:', temp_val['Текущая дата'],
-                      '\nДата дедлайна:', temp_val['Дата дедлайна'])
-                while True:
-                    a = input('Желаете ли снова изменить эту заметку? Да/Нет').capitalize()
-                    if a == 'Да' or a == 'Нет':
+                        else:
+                            print('Вы ввели некоректную команду, попробуйте снова! ')
+                    if a == 'Да':
+                        continue
+                    elif a == 'Нет':
+                        print('Вы закончили замену! ')
                         break
-                    else:
-                        print('Вы ввели некоректную команду, попробуйте снова! ')
-                if a == 'Да':
+                except KeyError:
+                    print('Указанная заметка не найдена. Попробуйте снова.')
                     continue
-                elif a == 'Нет':
-                    print('Вы закончили замену! ')
-                    break
             except ValueError:
                 if temp_num_title.capitalize() == 'Нет' or temp_num_title.capitalize() == '':
                     print('Вы закончили замену! ')

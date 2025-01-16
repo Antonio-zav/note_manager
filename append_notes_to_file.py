@@ -65,18 +65,20 @@ def create_note(titles_stat={}):
     return titles_stat
 
 def append_notes_to_file():
-    Note_manager = open('Note_manager.txt', 'a', encoding='utf-8')
-    i = 0
-    for keys in titles_stat:
-        i += 1
-        Note_manager.write('-------------------------\n')
-        Note_manager.write(f'Заметка {i}:\n')
-        temp_val = titles_stat[keys]
-        for keys in temp_val:
-            temp = f'{keys}: {temp_val[keys]}\n'
-            Note_manager.write(temp)
-
-    Note_manager.close()
+    try:
+        with open('Note_manager.txt', 'a', encoding='utf-8') as Note_manager:
+            i = 0
+            for keys in titles_stat:
+                i += 1
+                Note_manager.write('-------------------------\n')
+                Note_manager.write(f'Заметка {i}:\n')
+                temp_val = titles_stat[keys]
+                for key in temp_val:
+                    temp = f'{key}: {temp_val[key]}\n'
+                    Note_manager.write(temp)
+    except:
+        with open('Note_manager.txt', 'w', encoding='utf-8') as Note_manager:
+            print('Проблема с файлом. Новый файл будет создан')
 
 titles_stat = create_note()
 append_notes_to_file()

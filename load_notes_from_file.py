@@ -36,9 +36,8 @@ def load_notes_from_file():
 
     except FileNotFoundError:
         print('Файл не найден')
-        Note_manager = open('Note_manager.txt', 'w', encoding='utf-8')
-        Note_manager.close()
-        print('Новый файл был создан')
+        with open('Note_manager.txt', 'w', encoding='utf-8') as Note_manager:
+            print('Новый файл был создан')
     except IndexError:
         print('Данные введенны не в нужном формате. Проверьте содержимое')
     except PermissionError:
