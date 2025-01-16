@@ -169,7 +169,7 @@ def update_note(titles_stat):
     else:
         print('Нет введенных заметок')
 
-def search_notes(title_stat):
+def search_notes(titles_stat):
     temp_dict = copy.deepcopy(titles_stat)
     while True:
         temp_num_of_search = input('Введите номер нужного формата поиска'

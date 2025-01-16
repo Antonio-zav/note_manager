@@ -3,7 +3,7 @@
 import copy
 from datetime import date, datetime
 
-def create_note():
+def create_note(titles_stat):
     temp_for_title = 1
     while True:
         asker = input('Вы хотите добавить новую заметку? Да/Нет ').capitalize()
@@ -169,7 +169,7 @@ def update_note(titles_stat):
     else:
         print('Нет введенных заметок')
 
-def search_notes(title_stat):
+def search_notes(titles_stat):
     temp_dict = copy.deepcopy(titles_stat)
     while True:
         temp_num_of_search = input('Введите номер нужного формата поиска'
@@ -276,10 +276,10 @@ def delete_note(titles_stat):
                       '\nТекущая дата:', a['Текущая дата'],
                       '\nДата дедлайна:', a['Дата дедлайна'])
                 break
-            except ValueError:
+            except:
                 print('Заметка не найдена')
                 while True:
-                    a = input('Хотите ли вы продолжить удаление? Да/Нет')
+                    a = input('Хотите ли вы продолжить удаление? Да/Нет ').capitalize()
                     if a == 'Да' or a == 'Нет':
                         break
                     else:

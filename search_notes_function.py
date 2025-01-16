@@ -64,7 +64,7 @@ def create_note():
             print('Некорректный ввод команды! ')
     return titles_stat
 
-def search_notes(title_stat):
+def search_notes(titles_stat):
     temp_dict = copy.deepcopy(titles_stat)
     while True:
         temp_num_of_search = input('Введите номер нужного формата поиска'
